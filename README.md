@@ -90,8 +90,9 @@ python main.py
 ### 🗂️ Sobre o Dataset Escolhido
 
 * **Tema Geral:** Estatísticas de Pokémon (Gen 1 a 9)
-* **Fonte de Dados (URL):** (https://www.kaggle.com/datasets/abdurrahmanhakanacar/pokemon-gen-1-9-complete-stats-and-type-chart)
-* **Motivação:** 
+* **Fonte de Dados (URL):** https://www.kaggle.com/datasets/abdurrahmanhakanacar/pokemon-gen-1-9-complete-stats-and-type-chart
+* **Motivação:** O conjunto de dados reúne os atributos de combate (ataque, defesa, HP, velocidade), tipos e origens de todos os Pokémon das 9 gerações. A nossa curiosidade era analisar o balanceamento do jogo ao longo das gerações, identificando quais tipos dominam em força, como os status evoluíram e qual a diferença real de poder entre Pokémon comuns e lendários.
+
 
 ### 🏗️ Arquitetura e Estruturação (O que vocês codaram)
 
