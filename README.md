@@ -97,7 +97,7 @@ python main.py
 
 ### 🏗️ Arquitetura e Estruturação (O que vocês codaram)
 
-* **Módulos / Classes Criadas:**O projeto foi dividido em dois módulos com responsabilidades bem separadas, seguindo o princípio de separação de interesses (SoC):
+* **Módulos / Classes Criadas:** O projeto foi dividido em dois módulos com responsabilidades bem separadas, seguindo o princípio de separação de interesses (SoC):
 
 main.py — camada de interface e controle. Não contém nenhuma lógica de dados: apenas exibe o menu, lê a entrada do usuário (com tratamento de ValueError e KeyboardInterrupt) e delega cada opção a um método público da classe analisadora. O dicionário acoes mapeia número → método, deixando o executar_opcao limpo e extensível. O bloco try/except em torno do AnalisadorDeDados(...) converte falhas de carregamento em mensagens amigáveis e encerra com sys.exit(1).
 
