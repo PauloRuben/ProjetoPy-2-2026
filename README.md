@@ -83,9 +83,10 @@ python main.py
 
 ### 👥 Integrantes da Equipe
 
-* [Nome do Integrante 1] - [Matrícula]
-* [Nome do Integrante 2] - [Matrícula]
-* [Nome do Integrante 3] - [Matrícula]
+* Paulo Ruben Meira Prado 
+* Vinícius Fernandes Dantas 
+* Allana Matos 
+* Gustavo Maciel dos Santos
 
 ### 🗂️ Sobre o Dataset Escolhido
 
@@ -96,8 +97,8 @@ python main.py
 
 ### 🏗️ Arquitetura e Estruturação (O que vocês codaram)
 
-* **Módulos / Classes Criadas:** (Explique a responsabilidade da classe criada em `analisador.py`).
-* **Limpeza de Dados:** (Descreva se a base tinha muitos dados nulos e qual técnica foi utilizada para limpá-la - ex: `.dropna()`).
+* **Módulos / Classes Criadas:** .
+* **Limpeza de Dados:** .
 
 ### 📊 Gráficos Desenvolvidos
 
