@@ -97,7 +97,7 @@ python main.py
 
 ### 🏗️ Arquitetura e Estruturação (O que vocês codaram)
 
-* **Módulos / Classes Criadas:**O projeto foi dividido em dois módulos com responsabilidades bem separadas, seguindo o princípio de separação de interesses (SoC):
+* **Módulos / Classes Criadas:** O projeto foi dividido em dois módulos com responsabilidades bem separadas, seguindo o princípio de separação de interesses (SoC):
 
 main.py — camada de interface e controle. Não contém nenhuma lógica de dados: apenas exibe o menu, lê a entrada do usuário (com tratamento de ValueError e KeyboardInterrupt) e delega cada opção a um método público da classe analisadora. O dicionário acoes mapeia número → método, deixando o executar_opcao limpo e extensível. O bloco try/except em torno do AnalisadorDeDados(...) converte falhas de carregamento em mensagens amigáveis e encerra com sys.exit(1).
 
@@ -126,8 +126,11 @@ Pós-limpeza: generation é convertido para int, o índice é reorganizado com r
 
 Descreva detalhadamente as 3 visualizações construídas:
 
-1. **Visão 1:** (Ex: Gráfico de linha comparando a quantidade de chuva entre Jan e Fev).
-2. **Visão 2:** (Ex: Gráfico de barras indicando os 5 produtos mais rentáveis da loja).
-3. **Visão 3:** (Ex: Histograma validando a distribuição de idades na faixa de risco).
+1. <img width="900" height="500" alt="Histograma de HP" src="https://github.com/user-attachments/assets/f4fe6c3a-27b4-4397-820d-f8de5683a78d" />
+
+2. <img width="1104" height="485" alt="pokemon por geração" src="https://github.com/user-attachments/assets/6b49ad84-71aa-4f04-9ec0-97b0aa1583ae" />
+
+3. <img width="1100" height="600" alt="Distribuição de tipos primarios" src="https://github.com/user-attachments/assets/611be1df-e2b3-4c29-970e-c99f8e8f6c8b" />
+
 
 ```
