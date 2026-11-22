@@ -97,8 +97,30 @@ python main.py
 
 ### 🏗️ Arquitetura e Estruturação (O que vocês codaram)
 
-* **Módulos / Classes Criadas:** .
-* **Limpeza de Dados:** .
+* **Módulos / Classes Criadas:**O projeto foi dividido em dois módulos com responsabilidades bem separadas, seguindo o princípio de separação de interesses (SoC):
+
+main.py — camada de interface e controle. Não contém nenhuma lógica de dados: apenas exibe o menu, lê a entrada do usuário (com tratamento de ValueError e KeyboardInterrupt) e delega cada opção a um método público da classe analisadora. O dicionário acoes mapeia número → método, deixando o executar_opcao limpo e extensível. O bloco try/except em torno do AnalisadorDeDados(...) converte falhas de carregamento em mensagens amigáveis e encerra com sys.exit(1).
+
+src/analisador.py — classe AnalisadorDeDados, o núcleo do sistema. Concentra toda a lógica:
+
+Leitura do CSV via Pandas no construtor;
+Validação de esquema (_validar_colunas) contra COLUNAS_OBRIGATORIAS;
+Limpeza dos dados (_limpar_dados);
+Cálculos analíticos com groupby, filtros booleanos, corr(), nlargest(), idxmax();
+Geração dos gráficos com Matplotlib/Seaborn, com um método auxiliar privado _exibir() que padroniza layout, show() e close() — evitando vazamento de memória entre figuras.
+A classe também centraliza constantes (COLUNAS_STATS, COLUNAS_OBRIGATORIAS, COLUNAS_ESSENCIAIS), garantindo que qualquer ajuste no esquema dos dados seja feito em um único ponto. O método privado _grafico_top10() reutiliza a lógica das opções 4 e 8, eliminando duplicação de código.
+
+* **Limpeza de Dados:** A base tinha, sim, muitos valores nulos — mas não todos do mesmo tipo, e essa distinção foi o ponto-chave da limpeza:
+
+secondary_type (nulos "informativos"): Pokémon de tipo único têm "None" no CSV, que o Pandas lê como NaN. Esses nulos representam quase metade do dataset e não são sujeira — são informação legítima ("não possui 2º tipo"). Por isso foi aplicado fillna("Nenhum") (com replace("None", "Nenhum") por segurança) em vez de dropna(). A quantidade tratada é registrada em self.nulos_tipo_secundario e reportada na visão geral.
+
+Colunas booleanas (is_legendary, is_mythical, is_baby): preenchidas com fillna(False) e convertidas com .astype(bool), garantindo tipo consistente para os filtros booleanos (df[df["is_legendary"]] e df[~df["is_legendary"]]).
+
+dropna() seletivo: aplicado apenas em COLUNAS_ESSENCIAIS (name, generation, primary_type + os 6 atributos de combate). Se falta nome, geração, tipo primário ou qualquer stat, o Pokémon é inútil para os gráficos e é removido. O secondary_type foi deliberadamente excluído dessa lista para não perder quase metade da base.
+
+drop_duplicates(subset="pokedex_id"): como pokedex_id é único por Pokémon, linhas repetidas indicam duplicação real e são descartadas.
+
+Pós-limpeza: generation é convertido para int, o índice é reorganizado com reset_index(drop=True), e uma checagem final (if self.df.empty) levanta ValueError caso a limpeza tenha esvaziado a tabela — falha explícita em vez de gráficos vazios silenciosos..
 
 ### 📊 Gráficos Desenvolvidos
 
